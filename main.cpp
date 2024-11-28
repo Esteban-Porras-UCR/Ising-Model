@@ -1,4 +1,4 @@
-#include "Hamiltonnian.hpp"
+#include "Hamiltoniano.hpp"
 #include <iostream>
 #include <vector>
 #include <complex>

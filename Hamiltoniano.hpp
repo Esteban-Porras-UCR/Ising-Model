@@ -2,25 +2,31 @@
 #include <complex>
 #include <iostream>
 
-class Hamiltoniano {  // Definición de la clase Hamiltoniano, que encapsula las operaciones relacionadas con matrices y Hamiltonianos.
+class Hamiltoniano {
 public:
-    void mostrar_Hamiltoniano() const;   // Método para mostrar el Hamiltoniano almacenado.
+    // Constructor para inicializar el Hamiltoniano
+    Hamiltoniano(int N, double J, double G);
 
-    std::vector<std::vector<std::vector<std::complex<double>>>> productodirecto(      // Método para calcular el producto directo de una lista de matrices.
-        const std::vector<std::vector<std::vector<std::complex<double>>>>& matrices);
+    // Método para construir el Hamiltoniano
+    void crear_Hamiltoniano();
 
-    std::vector<std::vector<std::complex<double>>> actualizarHamiltoniano(   // Método para actualizar el Hamiltoniano usando un producto y un factor escalar.
-        int i,  // Índice que puede indicar qué parte del Hamiltoniano actualizar.
-        const std::vector<std::vector<std::complex<double>>>& producto,  // Matriz con la que se actualiza.
-        double factor);  // Factor escalar para la actualización.
+    // Método para mostrar el Hamiltoniano
+    void mostrar_Hamiltoniano() const;
 
-    std::vector<std::vector<std::complex<double>>> kronecker_product(      // Método para calcular el producto de Kronecker entre dos matrices.
+    // Método para calcular el producto de Kronecker
+    std::vector<std::vector<std::complex<double>>> kronecker_product(
         const std::vector<std::vector<std::complex<double>>>& A,
-        const std::vector<std::vector<std::complex<double>>>& B);
+        const std::vector<std::vector<std::complex<double>>>& B) const;
 
 private:
-    std::vector<std::vector<std::complex<double>>> hamiltoniano_matrix;      // Matriz interna que representa el Hamiltoniano.
-};
+    int N;  // Número de spins
+    double J;  // Interacción entre spins
+    double G;  // Campo magnético
+    std::vector<std::vector<std::complex<double>>> pauli_x, pauli_z, identidad; // Matrices de Pauli y matriz identidad
+    std::vector<std::vector<std::complex<double>>> hamiltoniano;  // Hamiltoniano calculado
 
+    // Método auxiliar para inicializar las matrices de Pauli y la identidad
+    void inicializar_matrices_pauli();
+};
 
 
