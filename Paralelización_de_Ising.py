@@ -87,7 +87,7 @@ for n in range(N.size):
 
             # Escribir el tiempo y el resultado en el archivo
             f.write(f"{times[t]} {resultado[t]}\n")
-            
+
             onda = rk4(Ec_Schrodinger, Hamiltoniano.matriz_hamiltoniano, onda, h)
 
     print(f"El método RK4 para N = {N[n]} duró: {time.time() - t1:.4f}s")

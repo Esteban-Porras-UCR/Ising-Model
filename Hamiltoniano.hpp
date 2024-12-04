@@ -9,6 +9,7 @@
 class Hamiltoniano 
 {
 private:
+    Hamiltoniano(); // Constructor por defecto privado para ocasionar un error
     int N; // Número de spins
     double J; // Interacción entre spins
     double G; // Campo magnético
